@@ -1,8 +1,15 @@
 <?php
 include "config.php";
 
-$sql2 = "SELECT * FROM products";
-$result = mysqli_query($conn, $sql2);
+$result = 5;
+
+if (isset($_GET['search'])){
+  $sql2 = "SELECT * FROM products WHERE name LIKE '%".$_GET['search']."%'";
+  $result = mysqli_query($conn, $sql2);
+}else{
+  $sql2 = "SELECT * FROM products";
+  $result = mysqli_query($conn, $sql2);
+}
 ?>
 
 <div class="row justify-content-center">
@@ -24,7 +31,7 @@ if ($result->num_rows > 0) {
       if(isset($_COOKIE["role"]) && $_COOKIE['role'] == 1){?>
       <a href="delete_product_process.php?id=<?php echo $row['product_id']?>" class="btn btn-primary">Delete</a>
       <?php } ?>
-  </div>
+  </div></div>
  <?php }
 }
 ?>
