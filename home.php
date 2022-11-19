@@ -20,6 +20,10 @@ if ($result->num_rows > 0) {
       if(isset($_COOKIE["role"]) && $_COOKIE['role'] == 1){?>
       <a href="?page=edit&&id=<?php echo $row['product_id']?>&&name=<?php echo $row['name']?>&&price=<?php echo $row['price']?>&&description=<?php echo $row['description']?>" class="btn btn-primary">Edit</a>
       <?php } ?>
+      <?php
+      if(isset($_COOKIE["role"]) && $_COOKIE['role'] == 1){?>
+      <a href="delete_product_process.php?id=<?php echo $row['product_id']?>" class="btn btn-primary">Delete</a>
+      <?php } ?>
   </div>
  <?php }
 }

@@ -30,6 +30,8 @@
       echo '<h1>Action3</h1>';
     }else if ($_GET['page'] == 'edit'){
       include 'edit.php';
+    }else if ($_GET['page'] == 'edit'){
+        include 'edit.php';
     }else if ($_GET['page'] == 'add_product'){
       if(isset($_COOKIE["role"]) && $_COOKIE['role'] == 1){
         include 'add_product.php';
