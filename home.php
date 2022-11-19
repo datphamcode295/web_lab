@@ -1,46 +1,52 @@
+<?php
+include "config.php";
+
+$sql2 = "SELECT * FROM products";
+$result = mysqli_query($conn, $sql2);
+?>
+
 <div class="row justify-content-center">
-      <div class="card m-2" style="width: 28rem;">
-        <img src="./img/card.jpg" class="card-img-top" alt="card">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+<?php
+if ($result->num_rows > 0) { 
+  // output data of each row
+  while($row = $result->fetch_assoc()) {?>
+    <div class="card m-2" style="width: 28rem;" id="<?php echo $row['product_id']?>">
+    <img src="./img/card.jpg" class="card-img-top" alt="card">
+    <div class="card-body">
+      <h5 class="card-title"><?php echo $row['name']?> - <?php echo $row['price']?> đồng</h5>
+      <p class="card-text">"<?php echo $row['description']?>"</p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <?php
+      if(isset($_COOKIE["role"]) && $_COOKIE['role'] == 1){?>
+      <a href="?page=edit&&id=<?php echo $row['product_id']?>&&name=<?php echo $row['name']?>&&price=<?php echo $row['price']?>&&description=<?php echo $row['description']?>" class="btn btn-primary">Edit</a>
+      <?php } ?>
+  </div>
+ <?php }
+}
+?>
+</div>
 
-      <div class="card m-2" style="width: 28rem;">
-        <img src="./img/card.jpg" class="card-img-top" alt="card">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+<script type="text/javascript">
+  let id = 0
+  function edit(e){
+    console.log(e.target.id)
+  }
+  function sendEdit(){
+    window.location.href = "/linkto/product.php?"+id;
+  }
+  let buts = document.getElementsByClassName("edit-button")
+  for (e of buts) {
+      e.addEventListener("click", edit)
+  }
 
-      <div class="card m-2" style="width: 28rem;">
-        <img src="./img/card.jpg" class="card-img-top" alt="card">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
+  $('#exampleModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
 
-      <div class="card m-2" style="width: 28rem;">
-        <img src="./img/card.jpg" class="card-img-top" alt="card">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-
-      <div class="card m-2" style="width: 28rem;">
-        <img src="./img/card.jpg" class="card-img-top" alt="card">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
-        </div>
-      </div>
-    </div>
+</script>

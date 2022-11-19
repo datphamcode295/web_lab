@@ -43,25 +43,21 @@ if(isset($_POST['uname']) && isset($_POST['pass'])) {
         exit();
     }else{
             $pass = md5($pass);
-            $sql = "SELECT * FROM users WHERE 'username='$uname' ";
-            echo $_POST['uname'], " ", $_POST['pass'];
-            // echo mysqli_query($conn, $sql).$php_errormsg;
-            // echo "ok";
-
-            if (mysqli_query($conn, $sql)) {
-                echo("Error description: " . $conn -> error);
-            }else{
+            $sql3 = "SELECT * FROM users WHERE 'username'='a'";
+            $check =  $conn->query($sql3);
+            if ($check) {
                 echo "Table products created successfully\n";
+            }else{
+                echo("Error description: " . $conn -> error);
             }
 
             echo "Table products created successfully\n";
 
             
-            if (mysqli_num_rows($result) > 0) {
+            if (mysqli_num_rows($check) > 0) {
                 header("Location: index.php?page=register&&error=The username is taken try another");
                 exit();
             }else {
-                echo $_POST['uname'], " ", $_POST['pass'];
                $sql2 = "INSERT INTO users(username, password, role, name) VALUES('$uname', '$pass', 0,'$name')";
 
                $result2 = mysqli_query($conn, $sql2);

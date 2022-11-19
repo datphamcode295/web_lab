@@ -33,8 +33,14 @@
             </li><li class="nav-item">
             <a class="nav-link" href="?page=register">Register</a>
           </li>
-
           <?php  }else{ ?>
+            <?php 
+          if(isset($_COOKIE["role"]) && $_COOKIE['role'] == 1){
+            echo '<li class="nav-item">
+                     <a class="nav-link" href="?page=add_product">Add Product</a>
+                   </li>';
+           }
+          ?>
             </li><li class="nav-item">
               <a class="nav-link" href="logout.php">Logout(
                 <?php echo $_COOKIE["name"] ?>
