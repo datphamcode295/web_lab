@@ -30,9 +30,7 @@
       echo '<h1>Action3</h1>';
     }else if (isset($_GET['search'])){
       header("Location: index.php?page=home&&search=".$_GET['search']);
-    }else if ($_GET['page'] == 'search'){
-        include 'edit.php';
-    }else if ($_GET['page'] == 'delete_product_process'){
+    }else if ($_GET['page'] == 'edit'){
         include 'edit.php';
     }else if ($_GET['page'] == 'add_product'){
       if(isset($_COOKIE["role"]) && $_COOKIE['role'] == 1){
