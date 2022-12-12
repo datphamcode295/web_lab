@@ -1,4 +1,4 @@
-<footer class="text-center text-lg-start bg-light text-muted">
+<footer class="text-center text-lg-start bg-light text-muted pt-1 mt-5">
   <section class="">
     <div class="container text-center text-md-start mt-5">
       <div class="row mt-3">
@@ -17,16 +17,16 @@
             Products
           </h6>
           <p>
-            <a href="#!" class="text-reset">Angular</a>
+            <a href="#!" class="text-reset">Phone</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">React</a>
+            <a href="#!" class="text-reset">Laptop</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Vue</a>
+            <a href="#!" class="text-reset">PhoneCase</a>
           </p>
           <p>
-            <a href="#!" class="text-reset">Laravel</a>
+            <a href="#!" class="text-reset">Tablet</a>
           </p>
         </div>
 

@@ -15,13 +15,14 @@
     ?>
     <?php if ($_GET['page'] == 'home'){
       include 'home.php'; 
-
-    }else if ($_GET['page'] == 'product'){
-      echo '<h1>Product</h1>';
     }else if ($_GET['page'] == 'login'){
       include 'login.php'; 
     }else if ($_GET['page'] == 'register'){
       include 'register.php';
+    }else if ($_GET['page'] == 'search'){
+      include 'search.php';
+    }else if ($_GET['page'] == 'product-detail'){
+      include 'product_detail.php';
     }else if ($_GET['page'] == 'action1'){
       echo '<h1>Action1</h1>';
     }else if ($_GET['page'] == 'action2'){
